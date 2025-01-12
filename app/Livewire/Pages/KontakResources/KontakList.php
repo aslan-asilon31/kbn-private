@@ -8,6 +8,11 @@ class KontakList extends Component
 {
     public function render()
     {
-        return view('livewire.pages.kontak-resources.kontak-list');
+        return view('livewire.pages.kontak-resources.kontak-list')
+        ->title($this->title);
     }
+
+    public string $title = 'Kontak';  
+
+
 }

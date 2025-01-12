@@ -15,11 +15,11 @@
                         <small>Product category</small>
                     </div>
                     <div class="quantity">
-                        <input type="number" value="2" class="form-control form-quantity" />
+                        <x-input label="" type="number" value="2" class="form-control text-lg form-quantity"  inline />
                     </div>
                     <div class="price">
-                        <span class="final">$ 1.998</span>
-                        <span class="discount">$ 2.666</span>
+                        <span class="final">Rp 1.998</span>
+                        <span class="discount">Rp 2.666</span>
                     </div>
                     <!--delete-this-item-->
                     <span class="icon icon-cross icon-delete"></span>

@@ -8,6 +8,9 @@ class ProdukDetailList extends Component
 {
     public function render()
     {
-        return view('livewire.pages.produk-detail-resources.produk-detail-list');
+        return view('livewire.pages.produk-detail-resources.produk-detail-list')
+        ->title($this->title);
     }
+
+    public string $title = 'Produk detail';  
 }
