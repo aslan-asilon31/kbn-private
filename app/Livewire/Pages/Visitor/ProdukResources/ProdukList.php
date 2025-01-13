@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire\Pages\ProdukResources;
+namespace App\Livewire\Pages\Visitor\ProdukResources;
 
 use Livewire\Component;
 use App\Models\Product;
@@ -48,6 +48,7 @@ class ProdukList extends Component
     public function render()
     {
         return view('livewire.pages.produk-resources.produk-list')
+        ->layout('components.layouts.app_visitor')
         ->title($this->title);
       }
   

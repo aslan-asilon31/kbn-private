@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Livewire\Pages\HomeResources;
+namespace App\Livewire\Pages\Visitor\HomeResources;
 
 use Livewire\Component;
-use App\Models\Product;   
+use App\Models\ProductBrand;   
 use App\Models\ProductContent;   
 use App\Models\ProductCategoryFirst;
 use App\Models\ProductCategorySecond;  
@@ -15,6 +15,8 @@ class HomeList extends Component
     public string $title = 'Home';  
     public $product_category_first;   
     public $product_category_second;   
+    public $product_brands;   
+    public $product_brand_lists;   
     public $product_contents;   
   
     public function mount() 
@@ -56,6 +58,26 @@ class HomeList extends Component
             'product_contents.is_activated',
         ])->get();
 
+        $this->product_brands =  ProductBrand::query()
+          ->select([
+            'product_brands.id',
+            'product_brands.name',
+            'product_brands.image_url',
+            'product_brands.created_by',
+            'product_brands.updated_by',
+            'product_brands.created_at',
+            'product_brands.updated_at',
+            'product_brands.is_activated',
+        ])->get();
+
+        $this->product_brand_lists = ProductBrand::query()  
+        ->with(['products' => function ($query) {  
+            $query->take(5); // Ambil maksimal 5 produk untuk setiap brand  
+        }])  
+        ->inRandomOrder()  
+        ->take(2)  
+        ->get();
+
     }  
   
 
@@ -63,7 +85,8 @@ class HomeList extends Component
     public function render()
     {
         return view('livewire.pages.home-resources.home-list')
-        ->title($this->title);  
+        ->layout('components.layouts.app_visitor')
+        ->title($this->title);
 
     }
 }
