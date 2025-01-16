@@ -2,23 +2,33 @@
     <div class="col-md-3 col-xs-12">
         <div class="filters">
 
-            <!--Availability-->
-            <div class="filter-box active">  
-                <div class="title">  
-                    Availability  
-                </div>  
-                <div class="filter-content">  
-                    <x-checkbox label="In stock" wire:model="available" hint="(152)" id="availableId1" checked="checked" />  
-                    <x-checkbox label="1 Week" wire:model="available1" hint="(100)" id="availableId2" />  
-                    <x-checkbox label="2 Weeks" wire:model="available2" hint="(80)" id="availableId3" />  
-                </div>  
-            </div>  
+
+            <div class="filter-box active">
+                <div class="title">
+                    Cari berdasarkan Brand
+                </div>
+                <div class="filter-content ">
+                    <select wire:model.live="filterCategory" class=" w-full text-center">    
+                        <option value="">Pilih brand</option>  
+                        @forelse($brands as $brand)  
+                            <option value="{{ $brand->name }}">{{ $brand->name }}</option> 
+                        @empty 
+                            no data brand
+                        @endforelse   
+                    </select>
+                </div>
+            </div>
+
+            <div class="filter-box active">
+                <div class="title">
+                    Cari berdasarkan nama produk
+                </div>
+                <div class="filter-content text-center">
+                    <input type="text" wire:model.live="filterName" class=" w-full text-center" placeholder="Cari berdasarkan nama produk disini ..." />    
+                </div>
+            </div>
 
           
-            <!--close filters on mobile / update filters-->
-            <div class="toggle-filters-close btn btn-main">
-                Update search
-            </div>
 
         </div> <!--/filters-->
     </div>

@@ -33,7 +33,7 @@
       {{-- BRAND --}}
       <x-app-brand class="p-5 pb-0" />
 
-      @livewire('partials.sidebar-menu')
+      @livewire('pages.admin.partials.sidebar-menu')
     </x-slot:sidebar>
 
     {{-- The `$slot` goes here --}}

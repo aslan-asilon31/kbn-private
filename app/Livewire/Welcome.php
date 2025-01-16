@@ -3,8 +3,8 @@
 namespace App\Livewire;
 
 use Illuminate\Support\Collection;
-use Livewire\Component;
 use Mary\Traits\Toast;
+use Livewire\Component;
 
 class Welcome extends Component
 {

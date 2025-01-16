@@ -19,46 +19,21 @@
                             <div class="box clearfix">
                                 <div class="row">
                                     <div class="clearfix">
-                                        <div class="col-lg-3">
-                                            <ul>
-                                                <li class="label"><i class="icon icon-star"></i> Computers</li>
-                                                <li><a href="#">Laptops</a></li>
-                                                <li><a href="#">Desktops</a></li>
-                                                <li><a href="#">PC Gaming</a></li>
-                                                <li><a href="#">Printers & Supplies</a></li>
-                                                <li class="more"><a href="#"><i class="icon icon-chevron-right"></i> More</a></li>
-                                            </ul>
-                                        </div>
-                                        <div class="col-lg-3">
-                                            <ul>
-                                                <li class="label"><i class="icon icon-star"></i> Vacuums</li>
-                                                <li><a href="#">Upright Vacuums</a></li>
-                                                <li><a href="#">Stick Vacuums</a></li>
-                                                <li><a href="#">Robotic Vacuums</a></li>
-                                                <li><a href="#">Handheld Vacuums</a></li>
-                                                <li class="more"><a href="#"><i class="icon icon-chevron-right"></i> More</a></li>
-                                            </ul>
-                                        </div>
-                                        <div class="col-lg-3">
-                                            <ul>
-                                                <li class="label"><i class="icon icon-star"></i> Refrigerators</li>
-                                                <li><a href="#">Mini Fridges</a></li>
-                                                <li><a href="#">Kegerators</a></li>
-                                                <li><a href="#">Beverage Refrigerators</a></li>
-                                                <li><a href="#">Wine Refrigerators</a></li>
-                                                <li class="more"><a href="#"><i class="icon icon-chevron-right"></i> More</a></li>
-                                            </ul>
-                                        </div>
-                                        <div class="col-lg-3">
-                                            <ul>
-                                                <li class="label"><i class="icon icon-star"></i> Appliances & Accessories</li>
-                                                <li><a href="#">Dishwasher Parts</a></li>
-                                                <li><a href="#">Oven & Ranges Parts</a></li>
-                                                <li><a href="#">Refrigerator & Freezer Parts</a></li>
-                                                <li><a href="#">Washer & Dryer Parts</a></li>
-                                                <li class="more"><a href="#"><i class="icon icon-chevron-right"></i> More</a></li>
-                                            </ul>
-                                        </div>
+                                        @forelse($brands as $brand)
+                                            <div class="col-lg-3">
+                                                <ul>
+                                                    <li class="label"><i class="icon icon-star"></i> {{ $brand->name }}</li>
+                                                    <li><a href="#">Laptops</a></li>
+                                                    <li><a href="#">Desktops</a></li>
+                                                    <li><a href="#">PC Gaming</a></li>
+                                                    <li><a href="#">Printers & Supplies</a></li>
+                                                    <li class="more"><a href="#"><i class="icon icon-chevron-right"></i> More</a></li>
+                                                </ul>
+                                            </div>
+                                        @empty
+                                            no data
+                                        @endforelse
+                                     
                                     </div>
                                     <div class="clearfix">
                                         <div class="col-lg-3">

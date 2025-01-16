@@ -79,14 +79,13 @@ class HomeList extends Component
         ->get();
 
     }  
-  
 
-
+    
     public function render()
     {
-        return view('livewire.pages.home-resources.home-list')
-        ->layout('components.layouts.app_visitor')
+        return view('livewire.pages.visitor.home-resources.home-list')
+          ->layout('components.layouts.app_visitor')
         ->title($this->title);
-
     }
+
 }

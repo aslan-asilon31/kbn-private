@@ -5,45 +5,89 @@ namespace App\Livewire\Pages\Visitor\ProdukResources;
 use Livewire\Component;
 use App\Models\Product;
 use App\Models\ProductContent;
+use App\Models\ProductBrand;
 
 
 class ProdukList extends Component
 {
-    public string $title = 'Product';
+    public string $title = 'Pencarian Product';
     public $product ;
     public $product_contents;
-    public $selectedProductId;   
-  
-    public function mount() 
-    { 
-      $this->product_contents =  ProductContent::query()
-        ->join('products', 'product_contents.product_id', 'products.id')
-        ->select([
-          'product_contents.id',
-          'products.name AS products_name',
-          'products.selling_price AS product_selling_price',
-          'products.discount_value AS product_discount_value',
-          'products.nett_price AS product_nett_price',
-          'product_contents.title',
-          'product_contents.slug',
-          'product_contents.url',
-          'product_contents.image_url',
-          'product_contents.created_by',
-          'product_contents.updated_by',
-          'product_contents.created_at',
-          'product_contents.updated_at',
-          'product_contents.is_activated',
-      ])->get();
+    public $products;
+    public $brands = [];
+    public $selectedProductId;  
+     
+    public $filterName = '';  
+    public $filterCategory = '';  
 
-    }
+    public function mount()     
+    {     
+        $this->loadProducts();   
+    }    
   
-
-    public function showProduct($id)  
-    {  
-        $this->selectedProductId = $id; // Set ID produk yang dipilih  
-        $this->product = ProductContent::find($id); 
-        
+    public function loadProducts()  
+    {   
+        $this->brands = ProductBrand::all();
+        $this->products = Product::query()  
+            ->join('product_contents', 'product_contents.product_id', 'products.id')  
+            ->join('product_brands', 'product_brands.id', 'products.product_brand_id')  
+            ->select([  
+                'product_contents.id',  
+                'products.name AS products_name',  
+                'products.selling_price AS product_selling_price',  
+                'products.discount_value AS product_discount_value',  
+                'products.nett_price AS product_nett_price',  
+                'product_contents.title',  
+                'product_contents.slug',  
+                'product_contents.url',  
+                'product_contents.image_url',  
+                'product_contents.created_by',  
+                'product_contents.updated_by',  
+                'product_contents.created_at',  
+                'product_contents.updated_at',  
+                'product_contents.is_activated',  
+                'product_brands.name AS product_brand_name',
+            ])->get();  
     }  
+
+    public function updated()  
+    {  
+        $this->filterProduct();  
+    } 
+
+  
+    public function filterProduct()   
+    {   
+        $this->products = Product::query()  
+        ->join('product_contents', 'product_contents.product_id', 'products.id')  
+        ->join('product_brands', 'product_brands.id', 'products.product_brand_id')  
+            ->select([  
+                'product_contents.id',  
+                'products.name AS products_name',  
+                'products.selling_price AS product_selling_price',  
+                'products.discount_value AS product_discount_value',  
+                'products.nett_price AS product_nett_price',  
+                'product_contents.title',  
+                'product_contents.slug',  
+                'product_contents.url',  
+                'product_contents.image_url',  
+                'product_contents.created_by',  
+                'product_contents.updated_by',  
+                'product_contents.created_at',  
+                'product_contents.updated_at',  
+                'product_contents.is_activated', 
+                'product_brands.name AS product_brand_name',
+
+            ])  
+            ->when($this->filterName, function ($query) {    
+                return $query->where('products.name', 'like', '%' . $this->filterName . '%');    
+            })    
+            ->when($this->filterCategory, function ($query) {    
+                return $query->where('product_brands.name', $this->filterCategory);    
+            })
+            ->get();  
+    }  
+    
 
     public function render()
     {
