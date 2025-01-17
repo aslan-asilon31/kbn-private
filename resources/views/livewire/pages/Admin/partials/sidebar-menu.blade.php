@@ -1,14 +1,14 @@
 <x-menu activate-by-route>
 
     {{-- User --}}
-    {{-- @if ($user = auth()->user()->employee) --}}
+    @if ($user = auth()->user()->employee)
         <x-menu-sub title="Setting" icon="o-cog-6-tooth">
         <x-menu-item title="Profile" icon="o-user-circle" link="#" />
         <x-menu-item wire:click="logout" title="Logout" icon="o-x-circle" />
         {{-- <x-menu-item title="sample" icon="o-arrow-right-circle" link="#" /> --}}
         </x-menu-sub>
         <x-menu-separator />
-    {{-- @endif --}}
+    @endif
   
   
     <x-menu-item title="Dashboard" icon="o-home" link="/" />

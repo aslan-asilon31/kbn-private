@@ -32,7 +32,7 @@ class Login extends Component
       [],
       $this->loginForm->attributes()
     )['loginForm'] ?? [];
-
+    
     if (\Illuminate\Support\Facades\Auth::attempt(['username' => $validatedLoginForm['username'], 'password' => $validatedLoginForm['password']])) {
       session()->regenerate();
       return redirect()->intended('dashboard');

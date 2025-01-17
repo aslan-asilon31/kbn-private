@@ -27,7 +27,7 @@ class AppBrand extends Component
                     <div {{ $attributes->class(["hidden-when-collapsed"]) }}>
                         <div class="flex items-center justify-center gap-2">
                             <span class="font-bold text-3xl me-3 bg-gradient-to-r from-purple-500 to-pink-300 bg-clip-text text-transparent ">
-                                KBN
+                                <img style="width:50px; padding:2px;" src="{{ asset('frontend/assets/images/logo.png') }}" alt="Logo kbn" />
                             </span>
                         </div>
                     </div>

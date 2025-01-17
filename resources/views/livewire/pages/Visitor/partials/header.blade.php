@@ -3,8 +3,10 @@
     
         <div class="clearfix">
     
-            <a href="index.html" class="logo "><img src="{{ asset('frontend/assets/images/logo.png') }}" alt="" /></a>
-    
+            <a href="/" class="logo">  
+                <img style="width:50px; padding:2px;" class="" src="{{ asset('frontend/assets/images/logo.png') }}" alt="Logo kbn" />  
+            </a>  
+            
             <!-- ==========  Pre navigation ========== -->
             <x-pre-navigation/>
     

@@ -4,7 +4,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/login', \App\Livewire\Pages\AuthenticationResources\Login::class)->name('login');
 
-// Route::group(['middleware' => 'auth'], function () {
+
+Route::group(['middleware' => 'auth'], function () {
     Route::get('/dashboard', \App\Livewire\Pages\Admin\DashboardResources\DashboardList::class)->name('dashboard');
 
     Route::get('/product-category-firsts', \App\Livewire\Pages\Admin\ProductCategoryFirstResources\ProductCategoryFirstList::class)->name('product_category_firsts.list');
@@ -41,5 +42,5 @@ Route::get('/login', \App\Livewire\Pages\AuthenticationResources\Login::class)->
     // Route::get('/permissions/show/{id}/{readonly}', \App\Livewire\Pages\Generals\PermissionResources\PermissionCrud::class)->where('readonly', 'readonly')->name('pages.show');
 
 
-// });
+});
 
